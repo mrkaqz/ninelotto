@@ -36,6 +36,7 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
   // get content from request body
   const promises = req.body.events.map(event => {
 
+    console.log(event.message.text);
     var rand = getRndInteger(0,msgsJSON.eatword.length);
     var replyText  = msgsJSON.eatword[rand];
 
