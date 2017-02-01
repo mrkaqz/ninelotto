@@ -1,1 +1,2 @@
-var LineBot = require('line-bot-sdk');
+
+console.log('Hello World');
