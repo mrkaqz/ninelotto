@@ -1,0 +1,24 @@
+{
+  "name": "ninelotto",
+  "version": "1.0.0",
+  "description": "9Lotto Line Bot",
+  "main": "bot.js",
+  "dependencies": {
+    "firebase": "^3.6.8",
+    "line-bot-sdk": "^0.1.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrkaqz/ninelotto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrkaqz/ninelotto/issues"
+  },
+  "homepage": "https://github.com/mrkaqz/ninelotto#readme"
+}
