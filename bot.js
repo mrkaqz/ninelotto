@@ -39,6 +39,6 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
     .then(() => res.json({success: true}))
 })
  
-app.listen(process.env.PORT || 3000, () => {
+app.listen(process.env.PORT || 80, () => {
   console.log('Example app listening on port 3000!')
 })
