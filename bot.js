@@ -19,6 +19,10 @@ line.init({
   channelSecret: 'dd9e4f38db934a29efa6d268b33e3970'
 })
  
+app.get('/', function () {
+    console.log('Hello Wolrd');
+})
+
 app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
   // get content from request body
   const promises = req.body.events.map(event => {
@@ -38,7 +42,8 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
     .all(promises)
     .then(() => res.json({success: true}))
 })
+
  
 app.listen(process.env.PORT || 80, () => {
-  console.log('Example app listening on port 3000!')
+  console.log('Example app listening on port 80!')
 })
