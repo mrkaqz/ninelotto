@@ -19,7 +19,7 @@ line.init({
   channelSecret: 'dd9e4f38db934a29efa6d268b33e3970'
 })
  
-app.get('/', function () {
+app.get('/debug', function () {
     console.log('Hello Wolrd');
 })
 
