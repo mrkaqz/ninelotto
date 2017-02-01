@@ -6,10 +6,12 @@ const bodyParser = require('body-parser')
 const app = express()
 
 var msgsJSON = require('./message.json');
-var msgs = JSON.parse(msgsJSON);
 
-console.log(msgs.eatword.1);
- 
+
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min) ) + min;
+}
+
 // need raw buffer for signature validation
 app.use(bodyParser.json({
   verify (req, res, buf) {
@@ -33,16 +35,19 @@ app.get('/debug', function () {
 app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
   // get content from request body
   const promises = req.body.events.map(event => {
+
+    var rand = getRndInteger(0,msgsJSON.eatword.length);
+    var replyText  = msgsJSON.eatword[rand];
+
     // reply message
     return line.client
       .replyMessage({
         replyToken: event.replyToken,
         messages: [
           {
-
             type: 'text',
             //text: event.message.text
-            test : 
+            text : replyText
         }
         ]
       })
