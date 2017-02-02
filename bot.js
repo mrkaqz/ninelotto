@@ -29,7 +29,7 @@ line.init({
 })
  
 app.get('/debug', function () {
-    console.log('Hello Wolrd');
+    document.write('Hello Wolrd');
 })
 
 app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
