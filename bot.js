@@ -4,7 +4,7 @@ const line = require('node-line-bot-api')
 const express = require('express')
 const bodyParser = require('body-parser')
 const app = express()
-
+var config = require('./config.json');
 var msgsJSON = require('./message.json');
 
 
@@ -23,9 +23,9 @@ app.use(bodyParser.json())
 
 // init with auth
 line.init({
-  accessToken: 'tItdmtzc8IE/NBQ28ouLWWxVwuwXd8PSkjN9vFGhMjuNHOJU+tsRS+ZQn+xqqgo083mwevnDRcTPQYAGO2OevKA7lph3ddU4VXnMU8C5xFCeN5JKEG85C0k9UPm7AH657TtAKb+NCz9s3wdg1FpbHAdB04t89/1O/w1cDnyilFU=',
+  accessToken: config.accessToken,
   // (Optional) for webhook signature validation
-  channelSecret: 'dd9e4f38db934a29efa6d268b33e3970'
+  channelSecret: config.channelSecret
 })
  
 app.get('/debug', function () {
@@ -36,7 +36,6 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
   // get content from request body
   const promises = req.body.events.map(event => {
 
-    console.log(event.message.text);
     var rand = getRndInteger(0,msgsJSON.eatword.length);
     var replyText  = msgsJSON.eatword[rand];
 
