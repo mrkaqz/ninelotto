@@ -28,8 +28,8 @@ line.init({
   channelSecret: config.channelSecret
 })
  
-app.get('/debug', function () {
-    document.write('Hello Wolrd');
+app.get('/debug', function (req, res) {
+    res.send('Hello Wolrd');
 })
 
 app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
