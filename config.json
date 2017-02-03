@@ -1,4 +1,12 @@
-{
-    "accessToken" : "tItdmtzc8IE/NBQ28ouLWWxVwuwXd8PSkjN9vFGhMjuNHOJU+tsRS+ZQn+xqqgo083mwevnDRcTPQYAGO2OevKA7lph3ddU4VXnMU8C5xFCeN5JKEG85C0k9UPm7AH657TtAKb+NCz9s3wdg1FpbHAdB04t89/1O/w1cDnyilFU=",
-    "channelSecret" : "dd9e4f38db934a29efa6d268b33e3970"
+{   "line" : {
+                "accessToken" : "tItdmtzc8IE/NBQ28ouLWWxVwuwXd8PSkjN9vFGhMjuNHOJU+tsRS+ZQn+xqqgo083mwevnDRcTPQYAGO2OevKA7lph3ddU4VXnMU8C5xFCeN5JKEG85C0k9UPm7AH657TtAKb+NCz9s3wdg1FpbHAdB04t89/1O/w1cDnyilFU=",
+                "channelSecret" : "dd9e4f38db934a29efa6d268b33e3970"
+    },
+    "firebase" : {
+                "apiKey" : "AIzaSyDEz5LPtd5fFeHdYgSFbapGdZuUoUlWg2s",
+                "authDomain" : "lotto-13fa4.firebaseapp.com",
+                "databaseURL" : "https://lotto-13fa4.firebaseio.com/",
+                "storageBucket" : "lotto-13fa4.appspot.com"
+
+    }
 }

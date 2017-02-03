@@ -1,11 +1,19 @@
-var msgsJSON = require('./message.json');
-//var msgs = JSON.parse(msgsJSON);
+const firebase = require("firebase");
+var config = require('./config.json');
 
+//firebase config
+var fbconfig = {
+  apiKey: config.firebase.apiKey,
+  authDomain: config.firebase.authDomain,
+  databaseURL: config.firebase.databaseURL,
+  storageBucket: config.firebase.storageBucket,
+};
+firebase.initializeApp(fbconfig);
 
-function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
-}
+var database = firebase.database();
 
-var rand = getRndInteger(0,msgsJSON.eatword.length);
-console.log(msgsJSON.eatword[rand]);
-
+// firebase read database
+var lottoData = firebase.database().ref('/result/lotto20170201');
+lottoData.on('value', function(snapshot) {
+   var lottoResutl = snapshot.val();
+});

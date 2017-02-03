@@ -3,11 +3,32 @@
 const line = require('node-line-bot-api')
 const express = require('express')
 const bodyParser = require('body-parser')
+const firebase = require("firebase");
 const app = express()
+
 var config = require('./config.json');
 var msgsJSON = require('./message.json');
 
 
+
+//firebase config
+var fbconfig = {
+  apiKey: config.firebase.apiKey,
+  authDomain: config.firebase.authDomain,
+  databaseURL: config.firebase.databaseURL,
+  storageBucket: config.firebase.storageBucket,
+};
+firebase.initializeApp(fbconfig);
+
+var database = firebase.database();
+
+// firebase read database
+var lottoData = firebase.database().ref('/result/lotto20170201');
+lottoData.on('value', function(snapshot) {
+   var lottoResutl = snapshot.val();
+});
+
+// define function
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
