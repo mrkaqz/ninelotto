@@ -36,7 +36,7 @@ request(options, function (error, response, body) {
 
 app.post('/webhook', function (req, res) {
   //res.send('POST request to homepage');
-console.log(req);
+console.log(req.events);
 // Set the headers
 var headers = {
     'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ var options = {
 request(options, function (error, response, body) {
     if (!error && response.statusCode == 200) {
         // Print out the response body
-        res.send(body)
+        console.log(body)
     }
 })
 
