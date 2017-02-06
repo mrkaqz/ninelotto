@@ -74,7 +74,6 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
       })
   })
 
-  console.log(eq.body);
 
   Promise
     .all(promises)
