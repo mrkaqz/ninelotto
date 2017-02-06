@@ -3,7 +3,7 @@
 const line = require('node-line-bot-api')
 const express = require('express')
 const bodyParser = require('body-parser')
-const firebase = require("firebase");
+const firebase = require('firebase');
 const app = express()
 
 var config = require('./config.json');
