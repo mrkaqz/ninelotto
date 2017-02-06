@@ -36,7 +36,7 @@ request(options, function (error, response, body) {
 
 app.post('/webhook', function (req, res) {
   //res.send('POST request to homepage');
-console.log(req.events);
+console.log(req);
 // Set the headers
 var headers = {
     'Content-Type': 'application/json',
