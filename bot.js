@@ -1,9 +1,13 @@
 var request = require('request');
 var express = require('express')
+const bodyParser = require('body-parser')
 var app = express()
 
 var config = require('./config.json');
 var msgsJSON = require('./message.json');
+
+
+app.use(bodyParser.json())
 
 app.get('/', function (req, res) {
   res.send('Hello World!')
@@ -36,7 +40,7 @@ request(options, function (error, response, body) {
 
 app.post('/webhook', function (req, res) {
   //res.send('POST request to homepage');
-console.log(req);
+console.log(req.body);
 // Set the headers
 var headers = {
     'Content-Type': 'application/json',
