@@ -49,9 +49,22 @@ var headers = {
 
 // Configure the request
 var options = {
-    url: 'https://api.line.me/v1/oauth/verify',
-    method: 'GET',
-    headers: headers
+    url: 'https://api.line.me/v2/bot/message/reply',
+    method: 'POST',
+    headers: headers,
+    form: {
+    "replyToken": req.body.events.replyToken,
+    "messages":[
+        {
+            "type":"text",
+            "text":"Hello, user"
+        },
+        {
+            "type":"text",
+            "text":"May I help you?"
+        }
+    ]
+}
 }
 
 // Start the request
@@ -65,5 +78,5 @@ request(options, function (error, response, body) {
 });
 
 app.listen(process.env.PORT || 8080, () => {
-  console.log('Bot app listening on port 80!')
+  console.log('Bot app listening on port 8080!')
 })
