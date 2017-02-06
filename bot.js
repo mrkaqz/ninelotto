@@ -60,6 +60,6 @@ request(options, function (error, response, body) {
 
 });
 
-app.listen(8080, function () {
-  console.log('Example app listening on port 80!')
+app.listen(process.env.PORT || 8080, () => {
+  console.log('Bot app listening on port 80!')
 })
