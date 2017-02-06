@@ -1,92 +1,65 @@
-'use strict'
-
-const line = require('node-line-bot-api')
-const express = require('express')
-const bodyParser = require('body-parser')
-const firebase = require('firebase');
-const app = express()
+var request = require('request');
+var express = require('express')
+var app = express()
 
 var config = require('./config.json');
 var msgsJSON = require('./message.json');
 
-/*
+app.get('/', function (req, res) {
+  res.send('Hello World!')
+})
 
-//firebase config
-var fbconfig = {
-  apiKey: config.firebase.apiKey,
-  authDomain: config.firebase.authDomain,
-  databaseURL: config.firebase.databaseURL,
-  storageBucket: config.firebase.storageBucket,
-};
-firebase.initializeApp(fbconfig);
+app.get('/verify', function (req, res) {
+  //res.send('POST request to homepage');
 
-var database = firebase.database();
-
-// firebase read database
-var lottoData = firebase.database().ref('/result/lotto20170201');
-lottoData.on('value', function(snapshot) {
-lottoResult = snapshot.val();
-});
-
-*/
-
-// define function
-function getRndInteger(min, max) {
-    return Math.floor(Math.random() * (max - min) ) + min;
+// Set the headers
+var headers = {
+    'Authorization': config.line.accessToken
 }
 
+// Configure the request
+var options = {
+    url: 'https://api.line.me/v1/oauth/verify',
+    method: 'GET',
+    headers: headers
+}
 
-// need raw buffer for signature validation
-app.use(bodyParser.json({
-  verify (req, res, buf) {
-    req.rawBody = buf
-  }
-}))
-
-app.use(bodyParser.json())
-
-// init with auth
-line.init({
-  accessToken: config.accessToken,
-  // (Optional) for webhook signature validation
-  channelSecret: config.channelSecret
-})
- 
-app.get('/debug', function (req, res) {
-    res.send('Hello Wolrd');
+// Start the request
+request(options, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+        // Print out the response body
+        res.send(body)
+    }
 })
 
-app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
-  // get content from request body
+});
 
+app.post('/webhook', function (req, res) {
+  //res.send('POST request to homepage');
+console.log(req);
+// Set the headers
+var headers = {
+    'Content-Type': 'application/json',
+    'Authorization': config.line.accessToken
+}
 
-  const promises = req.body.events.map(event => {
+// Configure the request
+var options = {
+    url: 'https://api.line.me/v1/oauth/verify',
+    method: 'GET',
+    headers: headers
+}
 
-    var rand = getRndInteger(0,msgsJSON.eatword.length);
-    var replyText  = msgsJSON.eatword[rand];
-
-    // reply message
-    return line.client
-      .replyMessage({
-        replyToken: event.replyToken,
-        messages: [
-          {
-            type: 'text',
-            //text: event.message.text
-            text : replyText
-        }
-        ]
-      })
-  })
-  
-
-  Promise
-    .all(promises)
-    .then(() => res.json({success: true}))
-
-
+// Start the request
+request(options, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+        // Print out the response body
+        res.send(body)
+    }
 })
 
-app.listen(process.env.PORT || 80, () => {
-  console.log('Bot app listening on port 80!')
+});
+
+app.listen(8080, function () {
+  console.log('Example app listening on port 80!')
 })
