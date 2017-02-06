@@ -43,33 +43,29 @@ app.post('/webhook', function (req, res) {
 console.log(req.body.events);
 console.log(req.body.events[0].message.text);
 // Set the headers
-var headers = {
+var postHeaders = {
     'Content-Type': 'application/json',
     'Authorization': config.line.accessToken
 }
 
 // Configure the request
-var options = {
+var postOptions = {
     url: 'https://api.line.me/v2/bot/message/reply',
     method: 'POST',
-    headers: headers,
+    headers: postHeaders,
     form: {
-    "replyToken": req.body.events[0].replyToken,
-    "messages":[
+    'replyToken': req.body.events[0].replyToken,
+    'messages':[
         {
-            "type":"text",
-            "text":"Hello, user"
-        },
-        {
-            "type":"text",
-            "text":"May I help you?"
+            'type':'text',
+            'text':'Hello, user'
         }
     ]
-}
+    }
 }
 
 // Start the request
-request(options, function (error, response, body) {
+request(postOptions, function (error, response, body) {
     if (!error && response.statusCode == 200) {
         // Print out the response body
         console.log(body)
