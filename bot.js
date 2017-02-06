@@ -55,7 +55,8 @@ app.get('/debug', function (req, res) {
 
 app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
   // get content from request body
-  //console.log(req.body.events);
+
+
   const promises = req.body.events.map(event => {
 
     var rand = getRndInteger(0,msgsJSON.eatword.length);
@@ -74,14 +75,17 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
         ]
       })
   })
-
+  
 
   Promise
     .all(promises)
     .then(() => res.json({success: true}))
+
+    
 })
 
+
  
-app.listen(process.env.PORT || 80, () => {
+app.listen(process.env.PORT || 8080, () => {
   console.log('Bot app listening on port 80!')
 })
