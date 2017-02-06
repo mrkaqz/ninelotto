@@ -9,7 +9,7 @@ const app = express()
 var config = require('./config.json');
 var msgsJSON = require('./message.json');
 
-
+/*
 
 //firebase config
 var fbconfig = {
@@ -28,10 +28,13 @@ lottoData.on('value', function(snapshot) {
 lottoResult = snapshot.val();
 });
 
+*/
+
 // define function
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min) ) + min;
 }
+
 
 // need raw buffer for signature validation
 app.use(bodyParser.json({
