@@ -41,7 +41,7 @@ request(options, function (error, response, body) {
 app.post('/webhook', function (req, res) {
   //res.send('POST request to homepage');
 console.log(req.body.events);
-console.log(req.body.events[0].replyToken);
+console.log(req.body.events[0].message.text);
 // Set the headers
 var headers = {
     'Content-Type': 'application/json',
@@ -54,7 +54,7 @@ var options = {
     method: 'POST',
     headers: headers,
     form: {
-    "replyToken": req.body.events.replyToken,
+    "replyToken": req.body.events[0].replyToken,
     "messages":[
         {
             "type":"text",
