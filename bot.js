@@ -84,8 +84,6 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
 
 })
 
-
- 
 app.listen(process.env.PORT || 80, () => {
   console.log('Bot app listening on port 80!')
 })
