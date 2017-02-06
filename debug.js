@@ -1,5 +1,6 @@
 const firebase = require("firebase");
 var config = require('./config.json');
+var lottoResult;
 
 //firebase config
 var fbconfig = {
@@ -15,5 +16,7 @@ var database = firebase.database();
 // firebase read database
 var lottoData = firebase.database().ref('/result/lotto20170201');
 lottoData.on('value', function(snapshot) {
-   var lottoResutl = snapshot.val();
+lottoResult = snapshot.val();
 });
+
+console.log(lottoResult);
