@@ -81,7 +81,7 @@ app.post('/webhook/', line.validator.validateSignature(), (req, res, next) => {
     .all(promises)
     .then(() => res.json({success: true}))
 
-    
+
 })
 
 
