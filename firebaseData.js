@@ -22,14 +22,11 @@ read : function (lottoDate) {
 
   // firebase read database
   var lottoData = firebase.database().ref(`/result/lotto20170201`);
-  var lottoResults = lottoData.on('value', function(snapshot) {
-  lottoResult = snapshot.val();
-  console.log(`Read DB ${lottoDate}`);
-  //console.log(lottoResult); 
-  return lottoResult;
-  });
+  lottoData.once('value').then(function(snapshot) {
+  console.log(snapshot.val());
+  list = snapshot.val();
+})
 
-  return lottoResults;
 },
 
 write : function () {
@@ -39,6 +36,7 @@ write : function () {
 
 }
 
+data.read();
 
 
 
