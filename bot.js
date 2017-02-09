@@ -81,7 +81,7 @@ request(postOptions, function (error, response, body) {
 
 sendReply ('Bot Reply');
 
-console.log(database.read('20170201'));
+var data = database.read('20170201');
 
 });
 
