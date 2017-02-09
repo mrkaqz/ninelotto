@@ -39,9 +39,11 @@ request(options, function (error, response, body) {
 });
 
 app.post('/webhook', function (req, res) {
-  //res.send('POST request to homepage');
+  res.send('Bot Started');
+
 console.log(req.body.events);
 console.log(req.body.events[0].message.text);
+
 // Set the headers
 var postHeaders = {
     'Content-Type': 'application/json',
@@ -53,7 +55,7 @@ var postOptions = {
     url: 'https://api.line.me/v2/bot/message/reply',
     method: 'POST',
     headers: postHeaders,
-    form: {
+    body: {
     'replyToken': req.body.events[0].replyToken,
     'messages':[
         {
