@@ -56,7 +56,7 @@ var postOptions = {
     url: 'https://api.line.me/v2/bot/message/reply',
     method: 'POST',
     headers: postHeaders,
-    body: {
+    json: {
     'replyToken': req.body.events[0].replyToken,
     'messages':[
         {
