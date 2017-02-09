@@ -82,7 +82,7 @@ request(postOptions, function (error, response, body) {
 sendReply ('Bot Reply');
 
 var data = database.read('20170201');
-
+console.log(daata);
 });
 
 app.listen(process.env.PORT || 8080, () => {
