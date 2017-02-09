@@ -5,7 +5,7 @@ var app = express();
 
 var config = require('./config.json');
 var msgsJSON = require('./message.json');
-var database = require('./firebaseData.json');
+var database = require('./firebaseData.js');
 
 
 app.use(bodyParser.json())
