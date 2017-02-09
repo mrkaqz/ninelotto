@@ -81,8 +81,6 @@ request(postOptions, function (error, response, body) {
 
 sendReply (`Bot Reply to ${req.body.events[0].message.text}`);
 
-var data = database.read('20170201');
-console.log(data);
 
 });
 
