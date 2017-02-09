@@ -16,7 +16,7 @@ var lottoResult;
 
 
 
-var data = {
+module.exports = {
 
 read : function (lottoDate) {
 
@@ -38,9 +38,6 @@ write : function () {
 
 }
 
-data.read('20170201');
-
-data.write();
 
 
 
