@@ -39,12 +39,13 @@ request(options, function (error, response, body) {
 });
 
 app.post('/webhook', function (req, res) {
-  res.send('Bot Started');
 
+// Main bot script
+console.log('Webhook Event');
 console.log(req.body.events);
-console.log(req.body.events[0].replyToken);
-console.log(req.body.events[0].message.text);
 
+
+function sendReply (message) {
 // Set the headers
 var postHeaders = {
     'Content-Type': 'application/json',
@@ -61,7 +62,7 @@ var postOptions = {
     'messages':[
         {
             'type':'text',
-            'text':'Hello, user'
+            'text': message
         }
     ]
     }
@@ -74,6 +75,11 @@ request(postOptions, function (error, response, body) {
         console.log(body)
     }
 })
+
+}
+
+
+sendReply ('Hello This is Test Function');
 
 });
 
