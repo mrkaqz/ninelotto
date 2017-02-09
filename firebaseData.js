@@ -13,10 +13,25 @@ firebase.initializeApp(fbconfig);
 
 var database = firebase.database();
 
-// firebase read database
-var lottoData = firebase.database().ref('/result/lotto20170201');
-lottoData.on('value', function(snapshot) {
-lottoResult = snapshot.val();
-});
+module.exports = {
 
-console.log(lottoResult);
+read : function (lottoDate) {
+  // firebase read database
+  var lottoData = firebase.database().ref('/result/lotto20170201');
+  lottoData.on('value', function(snapshot) {
+  lottoResult = snapshot.val();
+  return lottoResult;
+  });
+
+},
+
+write : function () {
+ console.log('Write DB');
+}
+
+}
+
+
+
+
+

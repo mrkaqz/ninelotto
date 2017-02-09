@@ -1,10 +1,11 @@
 var request = require('request');
-var express = require('express')
-const bodyParser = require('body-parser')
-var app = express()
+var express = require('express');
+const bodyParser = require('body-parser');
+var app = express();
 
 var config = require('./config.json');
 var msgsJSON = require('./message.json');
+var database = require('./firebaseData.json');
 
 
 app.use(bodyParser.json())
@@ -78,8 +79,9 @@ request(postOptions, function (error, response, body) {
 
 }
 
+sendReply ('Bot Reply');
 
-sendReply ('Hello This is Test Function');
+console.log(database.read('20170201'));
 
 });
 
