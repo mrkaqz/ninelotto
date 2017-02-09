@@ -42,6 +42,7 @@ app.post('/webhook', function (req, res) {
   res.send('Bot Started');
 
 console.log(req.body.events);
+console.log(req.body.events[0].replyToken);
 console.log(req.body.events[0].message.text);
 
 // Set the headers
@@ -66,14 +67,14 @@ var postOptions = {
     }
 }
 
-/* Start the request
+Start the request
 request(postOptions, function (error, response, body) {
     if (!error && response.statusCode == 200) {
         // Print out the response body
         console.log(body)
     }
 })
-*/
+
 });
 
 app.listen(process.env.PORT || 8080, () => {
