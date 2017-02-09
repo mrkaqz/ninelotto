@@ -17,7 +17,7 @@ module.exports = {
 
 read : function (lottoDate) {
   // firebase read database
-  var lottoData = firebase.database().ref(`/result/lotto${lottoDate}`);
+  var lottoData = firebase.database().ref(`/result/lotto20170201`);
   lottoData.on('value', function(snapshot) {
   lottoResult = snapshot.val();
   return lottoResult;
