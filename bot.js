@@ -106,7 +106,7 @@ request(postOptions, function (error, response, body) {
 }
 
 sendReply (`Bot Reply to ${req.body.events[0].message.text}`);
-
+getDB();
 })
 
 app.listen(process.env.PORT || 8080, () => {
