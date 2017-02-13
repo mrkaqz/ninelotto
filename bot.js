@@ -64,7 +64,7 @@ function getDB() {
   // firebase read database
   var lottoData = firebase.database().ref(`/result/lotto20170201`);
   lottoData.once('value').then(function(snapshot) {
-  console.log(snapshot.val());
+  //console.log(snapshot.val());
   lottoResult = snapshot.val();
 })
 
