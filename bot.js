@@ -107,7 +107,7 @@ request(postOptions, function (error, response, body) {
 
 sendReply (`Bot Reply to ${req.body.events[0].message.text}`);
 
-
+})
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('Bot app listening on port 8080!')
