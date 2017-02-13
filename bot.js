@@ -63,6 +63,7 @@ console.log(req.body.events);
 
 function getDB() {
 
+  lottoResult = {};
 
   var database = firebase.database();
 
