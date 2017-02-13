@@ -68,6 +68,7 @@ function getDB() {
   lottoResult = snapshot.val();
 })
 
+  firebase.database().goOffline()
 
 }
 
