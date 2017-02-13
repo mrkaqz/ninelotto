@@ -1,12 +1,13 @@
-var request = require('request');
-var express = require('express');
+const request = require('request');
+const firebase = require("firebase");
+const express = require('express');
 const bodyParser = require('body-parser');
-var app = express();
+const app = express();
 
-var config = require('./config.json');
-var msgsJSON = require('./message.json');
-var database = require('./firebaseData.js');
+const config = require('./config.json');
+const msgsJSON = require('./message.json');
 
+var lottoResult = {};
 
 app.use(bodyParser.json())
 
@@ -45,6 +46,28 @@ app.post('/webhook', function (req, res) {
 console.log('Webhook Event');
 console.log(req.body.events);
 
+function getDB() {
+  //firebase config
+  var fbconfig = {
+  apiKey: config.firebase.apiKey,
+  authDomain: config.firebase.authDomain,
+  databaseURL: config.firebase.databaseURL,
+  storageBucket: config.firebase.storageBucket,
+  };
+
+  firebase.initializeApp(fbconfig);
+
+  var database = firebase.database();
+
+  // firebase read database
+  var lottoData = firebase.database().ref(`/result/lotto20170201`);
+  lottoData.once('value').then(function(snapshot) {
+  console.log(snapshot.val());
+  lottoResult = snapshot.val()
+})
+
+
+}
 
 function sendReply (message) {
 // Set the headers
@@ -81,9 +104,7 @@ request(postOptions, function (error, response, body) {
 
 sendReply (`Bot Reply to ${req.body.events[0].message.text}`);
 
-var idata = database.read('20170201');
-console.log(idata);
-});
+
 
 app.listen(process.env.PORT || 8080, () => {
   console.log('Bot app listening on port 8080!')
