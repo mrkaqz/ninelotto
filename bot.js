@@ -9,6 +9,19 @@ const msgsJSON = require('./message.json');
 
 var lottoResult = {};
 
+//firebase config
+var fbconfig = {
+apiKey: config.firebase.apiKey,
+authDomain: config.firebase.authDomain,
+databaseURL: config.firebase.databaseURL,
+storageBucket: config.firebase.storageBucket,
+};
+
+firebase.initializeApp(fbconfig);
+
+
+//App
+
 app.use(bodyParser.json())
 
 app.get('/', function (req, res) {
@@ -49,15 +62,7 @@ console.log(req.body.events);
 
 
 function getDB() {
-  //firebase config
-  var fbconfig = {
-  apiKey: config.firebase.apiKey,
-  authDomain: config.firebase.authDomain,
-  databaseURL: config.firebase.databaseURL,
-  storageBucket: config.firebase.storageBucket,
-  };
 
-  firebase.initializeApp(fbconfig);
 
   var database = firebase.database();
 
@@ -68,7 +73,7 @@ function getDB() {
   lottoResult = snapshot.val();
 })
 
-  firebase.database().goOffline()
+
 
 }
 
