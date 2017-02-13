@@ -61,9 +61,7 @@ console.log(req.body.events);
 
 
 
-function getDB() {
-
-  lottoResult = {};
+function getDB(lottodate,callback) {
 
   var database = firebase.database();
 
@@ -71,7 +69,7 @@ function getDB() {
   var lottoData = firebase.database().ref(`/result/lotto20170201`);
   lottoData.once('value').then(function(snapshot) {
   //console.log(snapshot.val());
-  lottoResult = snapshot.val();
+  callback(snapshot.val());
 })
 
 
@@ -113,8 +111,9 @@ request(postOptions, function (error, response, body) {
 }
 
 sendReply (`Bot Reply to ${req.body.events[0].message.text}`);
-getDB();
-console.log(lottoResult);
+getDB(function(result){
+    console.log(result));
+    
 })
 
 app.listen(process.env.PORT || 8080, () => {
