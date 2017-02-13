@@ -46,6 +46,8 @@ app.post('/webhook', function (req, res) {
 console.log('Webhook Event');
 console.log(req.body.events);
 
+/*
+
 function getDB() {
   //firebase config
   var fbconfig = {
@@ -68,6 +70,7 @@ function getDB() {
 
 
 }
+*/
 
 function sendReply (message) {
 // Set the headers
